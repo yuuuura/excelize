@@ -493,10 +493,7 @@ func (f *File) SetSheetRow(sheet, axis string, slice interface{}) error {
 // getCellInfo does common preparation for all SetCell* methods.
 func (f *File) prepareCell(xlsx *xlsxWorksheet, sheet, cell string) (*xlsxC, int, int, error) {
 	var err error
-	cell, err = f.mergeCellsParser(xlsx, cell)
-	if err != nil {
-		return nil, 0, 0, err
-	}
+	// Without mergeCellsParser
 	col, row, err := CellNameToCoordinates(cell)
 	if err != nil {
 		return nil, 0, 0, err
